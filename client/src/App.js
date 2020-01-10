@@ -1,43 +1,24 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {
   BrowserRouter as Router,
-  Switch,
   Route,
-  Link,
-  Redirect,
-  useHistory,
-  useLocation
 } from "react-router-dom";
-//import './App.css';
-//import Homepage from './components/homepage';
-import Registration from './components/registration';
+
+import Register from './components/registration';
 import Login from './components/login';
-//import Userpage from './components/userpage';
+import Landing from './components/landing';
 
-function App() {
-return (
-    <Router>
-      <div>
-        <ul>
-          <li>
-            <Link to="/login">login</Link>
-          </li>
-          <li>
-            <Link to="/register">register</Link>
-          </li>
-        </ul>
-
-        <Switch>
-          <Route path="/login">
-            <Login />
-          </Route>
-          <Route path="/register">
-            <Registration />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
-  );
+class App extends Component {
+  render() {
+    return (
+      <Router>
+        <div className="App">
+          <Route exact path="/" component={Landing} />
+          <Route exact path="/register" component={Register} />
+          <Route exact path="/login" component={Login} />
+        </div>
+      </Router>
+    );
+  }
 }
-
 export default App;
