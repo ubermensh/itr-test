@@ -4,9 +4,9 @@ import {
   Route,
 } from "react-router-dom";
 
-import Register from './components/registration';
-import Login from './components/login';
-import Landing from './components/landing';
+import Register from './components/Registration';
+import Login from './components/Login';
+import Landing from './components/Landing';
 
 class App extends Component {
   render() {
