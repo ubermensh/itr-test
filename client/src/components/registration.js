@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import {registerUser} from "../utils/auth";
 class Register extends Component {
   constructor() {
@@ -23,7 +23,7 @@ const newUser = {
       password: this.state.password,
       password2: this.state.password2
     };
-  registerUser(newUser);
+  registerUser(newUser, this.props.history);
   };
 render() {
     const { errors } = this.state;
@@ -105,4 +105,4 @@ return (
     );
   }
 }
-export default Register;
+export default withRouter(Register);

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { loginUser } from "../utils/auth"
 class Login extends Component {
   constructor() {
@@ -19,8 +19,7 @@ const userData = {
       email: this.state.email,
       password: this.state.password
     };
-  loginUser(userData);
-console.log(userData);
+  loginUser(userData, this.props.history);
   };
 render() {
     const { errors } = this.state;
@@ -82,4 +81,4 @@ return (
     );
   }
 }
-export default Login;
+export default withRouter(Login);

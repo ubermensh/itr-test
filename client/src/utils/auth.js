@@ -9,25 +9,29 @@ const setAuthToken = token => {
   }
 };
 
-export const registerUser = (userData)  => {
+export const registerUser = (userData, history)  => {
   axios
     .post("/api/users/register", userData)
-    .then(res => {console.log('registered! go to Log in!')})
+    .then(res => {
+      history.push('/login');
+    })
     .catch(err => {console.log(err.response.data)})
 };
 
-export const loginUser = (userData ) =>  {
+export const loginUser = (userData, history ) =>  {
   axios
     .post("/api/users/login", userData)
     .then(res => {
       const { token } = res.data;
       localStorage.setItem("jwtToken", token);
       setAuthToken(token);
+      history.push('/dashboard');
     })
     .catch(err => {console.log(err.response.data);});
 };
 
-export const logoutUser = () => {
+export const logoutUser = (history) => {
   localStorage.removeItem("jwtToken");
   setAuthToken(false);
+  history.push('/landing');
 };

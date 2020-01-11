@@ -1,8 +1,10 @@
 import React, { Component } from "react";
+import {logoutUser} from '../utils/auth';
+import {  withRouter } from "react-router-dom";
 class Dashboard extends Component {
   onLogoutClick = e => {
     e.preventDefault();
-    console.log('log out');
+    logoutUser(this.props.history);
   };
 
 render() {
@@ -26,4 +28,4 @@ return (
   }
 }
 
-export default Dashboard;
+export default withRouter(Dashboard);
