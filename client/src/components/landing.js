@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 class Landing extends Component {
   render() {
     return (
@@ -42,4 +42,4 @@ class Landing extends Component {
     );
   }
 }
-export default Landing;
+export default withRouter(Landing);
