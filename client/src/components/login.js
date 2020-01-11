@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { loginUser } from "../utils/auth"
 class Login extends Component {
   constructor() {
     super();
@@ -18,6 +19,7 @@ const userData = {
       email: this.state.email,
       password: this.state.password
     };
+  loginUser(userData);
 console.log(userData);
   };
 render() {

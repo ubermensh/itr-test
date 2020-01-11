@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import {registerUser} from "../utils/auth";
 class Register extends Component {
   constructor() {
     super();
@@ -22,7 +23,7 @@ const newUser = {
       password: this.state.password,
       password2: this.state.password2
     };
-console.log(newUser);
+  registerUser(newUser);
   };
 render() {
     const { errors } = this.state;
