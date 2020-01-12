@@ -30,7 +30,7 @@ return (
         <div className="row">
           <div className="col s12 center-align">
             <h4>
-              welcome {this.props.user};
+              welcome {this.props.user.name};
             </h4>
             <button
               onClick={this.onLogoutClick}

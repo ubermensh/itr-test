@@ -13,18 +13,23 @@ class Login extends Component {
 onChange = e => {
     this.setState({ [e.target.id]: e.target.value });
   };
-onSubmit = e => {
+onSubmit = (e) => {
     e.preventDefault();
 const userData = {
-      email: this.state.email,
-      password: this.state.password
-    };
-  //loginUser(userData, this.props.history);
-  console.log( this.props );
-      this.props.setUser('afasfdaf');
-      localStorage.setItem("jwtToken", 'afasfdaf');
-    this.props.history.push('/dashboard');
-  };
+    email: this.state.email,
+    password: this.state.password
+};
+try {
+    loginUser(userData).then(loggedInUser => {
+        this.props.setUser(loggedInUser);
+        this.props.history.push('/dashboard');
+    });
+} catch (err) {
+    {
+        console.log(err.response.data);
+    }
+}
+};
 render() {
     const { errors } = this.state;
 return (

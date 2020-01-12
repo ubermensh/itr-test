@@ -14,15 +14,15 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: ''
+      user: {}
     }
     this.setUser = this.setUser.bind(this);
   };
-    setUser(user) {
-        this.setState({
-            user: user
-        });
-    };
+  setUser(user) {
+      this.setState({
+          user: user
+      });
+  };
 
   render() {
     return (
