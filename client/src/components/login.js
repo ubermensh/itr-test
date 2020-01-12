@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { loginUser } from "../utils/auth"
 class Login extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       email: "",
       password: "",
@@ -19,7 +19,11 @@ const userData = {
       email: this.state.email,
       password: this.state.password
     };
-  loginUser(userData, this.props.history);
+  //loginUser(userData, this.props.history);
+  console.log( this.props );
+      this.props.setUser('afasfdaf');
+      localStorage.setItem("jwtToken", 'afasfdaf');
+    this.props.history.push('/dashboard');
   };
 render() {
     const { errors } = this.state;

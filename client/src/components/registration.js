@@ -4,6 +4,7 @@ import {registerUser} from "../utils/auth";
 class Register extends Component {
   constructor() {
     super();
+    console.log(this.props.user);
     this.state = {
       name: "",
       email: "",

@@ -11,6 +11,19 @@ import Dashboard from './components/Dashboard';
 import PrivateRoute from "./components/private-route/PrivateRoute";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: ''
+    }
+    this.setUser = this.setUser.bind(this);
+  };
+    setUser(user) {
+        this.setState({
+            user: user
+        });
+    };
+
   render() {
     return (
       <Router>
@@ -18,10 +31,12 @@ class App extends Component {
           <Route exact path="/" component={Landing} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/landing" component={Landing} />
-          <Route exact path="/login" component={Login} />
+          <Route exact path="/login" >
+            <Login setUser= {this.setUser} />
+          </Route>
         </div>
         <PrivateRoute exact path="/dashboard">
-             <Dashboard/>
+             <Dashboard user={this.state.user} />
          </PrivateRoute>
       </Router>
     );

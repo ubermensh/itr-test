@@ -3,8 +3,9 @@ import {logoutUser} from '../utils/auth';
 import {searchOnliner} from '../utils/search';
 import {  withRouter } from "react-router-dom";
 class Dashboard extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    console.log('dashboard props', props);
     this.state = {
       query: "",
     };
@@ -29,7 +30,7 @@ return (
         <div className="row">
           <div className="col s12 center-align">
             <h4>
-              dashboard
+              welcome {this.props.user};
             </h4>
             <button
               onClick={this.onLogoutClick}
