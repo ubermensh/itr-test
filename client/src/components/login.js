@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
-import { loginUser } from "../utils/auth"
+import { loginUser } from "../utils/auth";
 class Login extends Component {
   constructor(props) {
     super(props);

@@ -15,7 +15,7 @@ export const registerUser = (userData, history)  => {
     .then(res => {
       history.push('/login');
     })
-    .catch(err => {console.log(err.response.data)})
+    .catch(err => {console.log(err.response.data)});
 };
 
 export async function loginUser(userData) {

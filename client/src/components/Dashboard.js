@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import {logoutUser} from '../utils/auth';
-import {searchOnliner} from '../utils/search';
+import {search} from '../utils/search';
 import {  withRouter } from "react-router-dom";
 class Dashboard extends Component {
   constructor(props) {
@@ -16,7 +16,7 @@ class Dashboard extends Component {
     };
   onSubmit = e => {
       e.preventDefault();
-      searchOnliner(this.state.query);
+      search(this.state.query);
     };
 
   onLogoutClick = e => {
