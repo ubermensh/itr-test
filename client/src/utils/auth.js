@@ -19,14 +19,21 @@ export const registerUser = (userData, history)  => {
 };
 
 export async function loginUser(userData) {
-    let res = await axios.post("/api/users/login", userData);
-    const {
-        token
-    } = res.data;
-    localStorage.setItem("jwtToken", token);
-    setAuthToken(token);
-    const decoded = jwt_decode(token);
-    return decoded;
+    try {
+        let res = await axios.post("/api/users/login", userData);
+        const {
+            token
+        } = res.data;
+        localStorage.setItem("jwtToken", token);
+        setAuthToken(token);
+        const decoded = jwt_decode(token);
+        return decoded;
+    } catch (err) {
+        {
+          console.log(err.response.data);
+          alert(JSON.stringify(err.response.data));
+        }
+    }
 };
 
 export const logoutUser = (history) => {
