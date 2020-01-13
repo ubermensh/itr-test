@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import {registerUser} from "../utils/auth";
-class Register extends Component {
+class Registration extends Component {
   constructor() {
     super();
-    console.log(this.props.user);
     this.state = {
       name: "",
       email: "",
@@ -106,4 +105,4 @@ return (
     );
   }
 }
-export default withRouter(Register);
+export default withRouter(Registration);

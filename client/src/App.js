@@ -4,7 +4,7 @@ import {
   Route,
 } from "react-router-dom";
 
-import Register from './components/Registration';
+import Registration from './components/Registration';
 import Login from './components/Login';
 import Landing from './components/Landing';
 import Dashboard from './components/Dashboard';
@@ -29,7 +29,7 @@ class App extends Component {
       <Router>
         <div className="App">
           <Route exact path="/" component={Landing} />
-          <Route exact path="/register" component={Register} />
+          <Route exact path="/register" component={Registration} />
           <Route exact path="/landing" component={Landing} />
           <Route exact path="/login" >
             <Login setUser= {this.setUser} />
