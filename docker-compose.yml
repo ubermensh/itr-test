@@ -1,0 +1,16 @@
+version: "3"
+services: 
+  server:
+    image: server
+    #build: .
+    container_name: server_container 
+    restart: always
+    ports:
+      - "5000:5000"
+  ui:
+    image: ui
+    #build: ./client
+    container_name: iu_container 
+    restart: always
+    ports:
+      - "3000:3000"
