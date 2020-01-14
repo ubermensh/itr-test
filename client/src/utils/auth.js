@@ -11,7 +11,7 @@ const setAuthToken = token => {
 
 export const registerUser = (userData, history)  => {
   axios
-    .post("/api/users/register", userData)
+    .post("http://localhost:5000/api/users/register", userData)
     .then(res => {
       history.push('/login');
     })
@@ -20,7 +20,7 @@ export const registerUser = (userData, history)  => {
 
 export async function loginUser(userData) {
     try {
-        let res = await axios.post("/api/users/login", userData);
+        let res = await axios.post("http://localhost:5000/api/users/login", userData);
         const {
             token
         } = res.data;
