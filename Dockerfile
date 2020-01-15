@@ -1,14 +1,7 @@
-FROM node:latest
+FROM node:12.2.0-alpine
 WORKDIR /usr/src/app
 COPY package*.json ./
 RUN npm install
-
-COPY config ./config/
-COPY models/ ./models/
-COPY routes/ ./routes/
-COPY validation/ ./validation/
-COPY server.js .
-
+COPY . .
 EXPOSE 5000:5000
-
 CMD ["npm", "start"]
