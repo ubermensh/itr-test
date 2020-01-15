@@ -1,5 +1,7 @@
 import axios from "axios";
 import jwt_decode from "jwt-decode";
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+console.log(BASE_URL);
 
 const setAuthToken = token => {
   if (token) {
@@ -11,7 +13,7 @@ const setAuthToken = token => {
 
 export const registerUser = (userData, history)  => {
   axios
-    .post("http://localhost:5000/api/users/register", userData)
+    .post(`${BASE_URL}/api/users/register`, userData)
     .then(res => {
       history.push('/login');
     })
@@ -20,7 +22,7 @@ export const registerUser = (userData, history)  => {
 
 export async function loginUser(userData) {
     try {
-        let res = await axios.post("http://localhost:5000/api/users/login", userData);
+        let res = await axios.post(`${BASE_URL}/api/users/login`, userData);
         const {
             token
         } = res.data;
