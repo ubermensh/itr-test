@@ -10,7 +10,7 @@ ifeq ($(UNAME_S),Darwin)
 endif
 
 
-# Switch from debug distribution to alpha
+# Switch from local distribution to remote
 remote:
 	find ${DIR} -type f -exec ${SED} -i 's|${LOCALHOST}|${REMOTE}|' {} \;
 
