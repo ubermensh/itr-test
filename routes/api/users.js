@@ -12,7 +12,7 @@ const User = require("../../models/User");
 // @desc Register user
 // @access Public
 router.post("/register", (req, res) => {
-  console.log('reg', req.body);
+  console.log('REGISTER', req.body);
   // Form validation
 const { errors, isValid } = validateRegisterInput(req.body);
 // Check validation
@@ -47,6 +47,7 @@ User.findOne({ email: req.body.email }).then(user => {
 // @desc Login user and return JWT token
 // @access Public
 router.post("/login", (req, res) => {
+  console.log('LOGIN', req.body);
   // Form validation
 const { errors, isValid } = validateLoginInput(req.body);
 // Check validation

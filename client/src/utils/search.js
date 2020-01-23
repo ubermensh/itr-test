@@ -1,11 +1,8 @@
 import axios from "axios";
-export const search = (query)  => {
-  console.log(query);
-  axios
-    .post("/api/search", query)
-    .then(res => {
-      console.log(res.body);
-    })
-    .catch(err => {console.log(err.response.data)});
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+export async function searchProducts (query) {
+  console.log('search products ', query);
+  const res = await axios.post(`${BASE_URL}/api/products/search`, {query});
+  return res.data.products;
 };
 
