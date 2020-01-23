@@ -4,9 +4,9 @@ const rp = require('request-promise');
 const router = express.Router();
 
 router.post("/search",
-  passport.authenticate('jwt', { failureRedirect: `${process.env.FRONT_URL}/landing` }),
+  passport.authenticate('jwt', {session: false}),
   (req, res) => {
-  const url = `${process.env.API_URL}/search/schemas?query=${req.body.query}`;
+  const url = `${process.env.API_URL}/search/products?query=${req.body.query}`;
     console.log('SEARCH ', req.body.query, url);
     rp(url)
         .then(function(data) {

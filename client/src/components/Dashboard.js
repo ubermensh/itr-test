@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import {logoutUser} from '../utils/auth';
-import {search} from '../utils/search';
+import {searchProducts} from '../utils/search';
 import {  withRouter } from "react-router-dom";
 class Dashboard extends Component {
   constructor(props) {
@@ -8,6 +8,7 @@ class Dashboard extends Component {
     console.log('dashboard props', props);
     this.state = {
       query: "",
+      products : []
     };
   }
 
@@ -16,7 +17,9 @@ class Dashboard extends Component {
     };
   onSubmit = e => {
       e.preventDefault();
-      search(this.state.query);
+    searchProducts(this.state.query).then((products) => {
+      this.setState({products});
+    });
     };
 
   onLogoutClick = e => {
@@ -66,6 +69,16 @@ return (
               </div>
             </form>
           </div>
+          {
+            this.state.products.map(product =>
+                <div key={product.id}>
+                    <h4>{product.name_prefix} {product.full_name} </h4>
+                    <p>{product.description}</p>
+                    <img src={product.images.header} alt={`${product.name}`} width="200"/>
+                    <hr/>
+                </div>
+            )
+          }
         </div>
       </div>
     );
