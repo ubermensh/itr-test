@@ -11,6 +11,9 @@ class Dashboard extends Component {
       products : []
     };
   }
+  componentDidMount() {
+    console.log('mount');
+  }
 
   onChange = e => {
       this.setState({ [e.target.id]: e.target.value });

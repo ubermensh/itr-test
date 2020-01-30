@@ -1,6 +1,7 @@
 const express = require("express");
 const passport = require("passport");
 const rp = require('request-promise');
+const User = require("../../models/User");
 const router = express.Router();
 
 router.post("/search",
@@ -10,11 +11,19 @@ router.post("/search",
     console.log('SEARCH ', req.body.query, url);
     rp(url)
         .then(function(data) {
-          console.log(data);
           res.send(data);
         })
         .catch(function(err) {
           console.log(err);
         });
+});
+
+router.post("/favorite",
+  //passport.authenticate('jwt', {session: false}),
+  (req, res) => {
+    const {email, productId} = req.body;
+    User.updateOne({ email }).then(user => {
+      res.send(user)}
+    );
 });
 module.exports = router;
