@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 import {
   BrowserRouter as Router,
@@ -11,6 +10,7 @@ import Login from './components/Login';
 import Landing from './components/Landing';
 import Dashboard from './components/Dashboard';
 import PrivateRoute from "./components/private-route/PrivateRoute";
+import {initialiseUserFromLocalStorage } from './utils/auth.js';
 
 class App extends Component {
   constructor(props) {
@@ -25,6 +25,12 @@ class App extends Component {
           user
       });
   }
+componentDidMount() {
+  if (localStorage.jwtToken) {
+    const user = initialiseUserFromLocalStorage();
+    this.setState({user});
+  }
+}
 
   render() {
     return (
