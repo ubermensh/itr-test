@@ -1,7 +1,6 @@
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 const BASE_URL = process.env.REACT_APP_BASE_URL;
-console.log(BASE_URL);
 
 const setAuthToken = token => {
   if (token) {
@@ -38,10 +37,8 @@ export async function loginUser(userData) {
         const decoded = jwt_decode(token);
         return decoded;
     } catch (err) {
-        {
-          console.log(err.response.data);
-          alert(JSON.stringify(err.response.data));
-        }
+      console.log(err.response.data);
+      alert(JSON.stringify(err.response.data));
     }
 };
 

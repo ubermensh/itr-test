@@ -19,9 +19,9 @@ router.post("/search",
 });
 
 router.post("/favorite",
-  //passport.authenticate('jwt', {session: false}),
+  passport.authenticate('jwt', {session: false}),
   (req, res) => {
-    const {email, productId} = req.body;
+    const {key, userId} = req.body;
     User.updateOne({ email }).then(user => {
       res.send(user)}
     );

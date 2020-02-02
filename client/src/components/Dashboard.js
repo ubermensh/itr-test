@@ -3,20 +3,19 @@ import {logoutUser} from '../utils/auth';
 import {searchProducts} from '../utils/search';
 import {  withRouter } from "react-router-dom";
 
-import { fade, makeStyles } from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
+import { fade } from '@material-ui/core/styles';
+//import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
 import Paper from '@material-ui/core/Paper';
 import { withStyles } from "@material-ui/core/styles";
-import TextField from '@material-ui/core/TextField';
 import Products from './Products';
+import dummyProducts from './dummyProducts';
 
 const styles = theme => ({
   root: {
@@ -71,10 +70,10 @@ const styles = theme => ({
 class Dashboard extends Component {
   constructor(props) {
     super(props);
-    console.log('dashboard props', props);
     this.state = {
       query: "",
-      products : []
+      //products : []
+      products : dummyProducts 
     };
   };
 
