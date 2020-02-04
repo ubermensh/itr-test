@@ -37,8 +37,8 @@ export async function loginUser(userData) {
         const decoded = jwt_decode(token);
         return decoded;
     } catch (err) {
-      console.log(err.response.data);
-      alert(JSON.stringify(err.response.data));
+      console.log(err);
+      alert(JSON.stringify(err));
     }
 };
 

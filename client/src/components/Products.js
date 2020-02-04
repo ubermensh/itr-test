@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { makeStyles } from '@material-ui/core/styles';
+//import { makeStyles } from '@material-ui/core/styles';
 import {Star, StarBorder} from '@material-ui/icons'; 
 import IconButton from '@material-ui/core/IconButton'
 import Table from '@material-ui/core/Table';
@@ -8,20 +8,14 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
-//const useStyles = makeStyles(theme => ({
-  //seeMore: {
-  //marginTop: theme.spacing(3),
-  //},
-//}));
-
 export default function Products(props) {
   const [favoriteList, setFavorite] = useState([]);
+  
   function addToFavorite (row) {
     const result = favoriteList.includes(row.id)? favoriteList.filter(fav => fav !== row.id): [...favoriteList, row.id];
     setFavorite(result);
-
   }
-  //const classes = useStyles();
+
   return (
     <React.Fragment>
       <Table size="small">

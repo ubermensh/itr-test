@@ -69,7 +69,7 @@ class Login extends Component {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          <form className={classes.form} noValidate onSubmit={this.onSubmit}>
+          <form className={classes.form} onSubmit={this.onSubmit}>
             <TextField
               variant="outlined"
               margin="normal"

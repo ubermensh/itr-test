@@ -1,21 +1,21 @@
 import React, { Component } from "react";
 import {logoutUser} from '../utils/auth';
-import {searchProducts} from '../utils/search';
 import {  withRouter } from "react-router-dom";
 
+import { green } from '@material-ui/core/colors';
+import { Terrain } from '@material-ui/icons'; 
 import { fade } from '@material-ui/core/styles';
 //import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
-import InputBase from '@material-ui/core/InputBase';
+import { Grid, Button, InputBase, Box, Paper, Tabs }from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
-import Paper from '@material-ui/core/Paper';
 import { withStyles } from "@material-ui/core/styles";
 import Products from './Products';
 import dummyProducts from './dummyProducts';
+import {searchProducts, getFavorites} from '../utils/productRequests';
+import {initialiseUserFromLocalStorage } from '../utils/auth.js';
 
 const styles = theme => ({
   root: {
@@ -73,8 +73,20 @@ class Dashboard extends Component {
     this.state = {
       query: "",
       //products : []
-      products : dummyProducts 
+      user: {},
+      products : dummyProducts
     };
+  };
+
+  componentDidMount() {
+    if (localStorage.jwtToken) {
+      const user = initialiseUserFromLocalStorage();
+      console.log(user);
+      this.setState({user});
+      console.log('athenticated');
+      getFavorites().then(favorites => console.log('fav result', favorites));
+
+    }
   };
 
   onChange = e => {
@@ -92,18 +104,23 @@ class Dashboard extends Component {
     logoutUser(this.props.history);
   };
 
+  onFavoriteClick= e => {
+    e.preventDefault();
+    console.log('favorites');
+  };
   render() {
     const { classes } = this.props;
     return (
       <div className={classes.root}>
         <AppBar position="static">
           <Toolbar>
-            <Button color="secondary" onClick={this.onLogoutClick} >
-              Logout
-            </Button>
-            <Typography className={classes.title} variant="h6" noWrap>
-              welcome {this.props.user.name}!
-            </Typography>
+            <Box mr={5}>
+              <Typography variant="h2" component="h2" align="center" variant="h5" gutterBottom='true' >
+                <Terrain style={{ color: green[500] }} fontSize="large" />
+                SuperShop
+              </Typography>
+            </Box>
+            <Box mr={6}>
             <form noValidate onSubmit={this.onSubmit}>
               <div className={classes.search}>
                 <div className={classes.searchIcon}>
@@ -123,6 +140,19 @@ class Dashboard extends Component {
                 </InputBase>
               </div>
             </form>
+            </Box>
+
+              <Button  variant='contained' onClick={this.onFavoriteClick} >
+               Favorite 
+              </Button>
+            <Typography align="right" className={classes.title} variant="h6" noWrap>
+              {this.state.user.name}
+            </Typography>
+            <Box ml={3}>
+              <Button  onClick={this.onLogoutClick} >
+                Logout
+              </Button>
+            </Box>
           </Toolbar>
         </AppBar>
         <Grid item xs={12}>
