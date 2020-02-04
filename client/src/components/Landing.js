@@ -1,44 +1,33 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
+import { green } from '@material-ui/core/colors';
+import { Container,Box, Paper, Typography, Grid , AppBar,Button  } from '@material-ui/core';
+import { Terrain } from '@material-ui/icons'; 
 class Landing extends Component {
   render() {
     return (
-      <div style={{ height: "75vh" }} className="container valign-wrapper">
-        <div className="row">
-          <div className="col s12 center-align">
-            <h4>
+      <Container>
+        <AppBar position="static">
+            <Typography variant="h2" component="h2" align="center" variant="h5" gutterBottom="true ">
+            <Terrain style={{ color: green[500] }} fontSize="large" />
               SuperShop
-            </h4>
-            <br />
-            <div className="col s6">
-              <Link
-                to="/register"
-                style={{
-                  width: "140px",
-                  borderRadius: "3px",
-                  letterSpacing: "1.5px"
-                }}
-                className="btn btn-large waves-effect waves-light hoverable blue accent-3"
-              >
-                Register
-              </Link>
-            </div>
-            <div className="col s6">
-              <Link
-                to="/login"
-                style={{
-                  width: "140px",
-                  borderRadius: "3px",
-                  letterSpacing: "1.5px"
-                }}
-                className="btn btn-large btn-flat waves-effect white black-text"
-              >
-                Log In
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
+            </Typography>
+        </AppBar>
+          <Box mt={2}>
+        <Paper >
+          <Grid container spacing={2}  justify="center" >
+            <Grid item>
+              <Button variant="contained" color = "primary" href="/register">
+                Register              </Button>
+            </Grid>
+            <Grid item >
+              <Button variant="contained" color = "primary" href="/login">
+                Log In               </Button>
+            </Grid>
+          </Grid>
+        </Paper>
+          </Box>
+      </Container>
     );
   }
 }

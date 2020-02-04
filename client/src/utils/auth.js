@@ -1,7 +1,6 @@
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 const BASE_URL = process.env.REACT_APP_BASE_URL;
-console.log(BASE_URL);
 
 const setAuthToken = token => {
   if (token) {
@@ -20,6 +19,13 @@ export const registerUser = (userData, history)  => {
     .catch(err => {console.log(err.response.data)});
 };
 
+export function initialiseUserFromLocalStorage() {
+  const token = localStorage.jwtToken;
+  setAuthToken(token);
+  const decoded = jwt_decode(token);
+  return decoded;
+};
+
 export async function loginUser(userData) {
     try {
         let res = await axios.post(`${BASE_URL}/api/users/login`, userData);
@@ -31,16 +37,13 @@ export async function loginUser(userData) {
         const decoded = jwt_decode(token);
         return decoded;
     } catch (err) {
-        {
-          console.log(err.response.data);
-          alert(JSON.stringify(err.response.data));
-        }
+      console.log(err);
+      alert(JSON.stringify(err));
     }
 };
 
 export const logoutUser = (history) => {
   localStorage.removeItem("jwtToken");
   setAuthToken(false);
-  //unset user from ???
   history.push('/landing');
 };

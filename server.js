@@ -2,8 +2,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const passport = require("passport");
-const users = require("./routes/api/users");
-const products = require("./routes/api/products");
+const users = require("./routes/api/usersRoute");
+const products = require("./routes/api/productsRoute");
 require('dotenv').config();
 const app = express();
 // Bodyparser middleware
