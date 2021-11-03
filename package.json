@@ -35,6 +35,6 @@
     "request": "^2.88.0",
     "request-promise": "^4.2.5",
     "typeface-roboto": "0.0.75",
-    "validator": "^12.1.0"
+    "validator": "^13.7.0"
   }
 }
